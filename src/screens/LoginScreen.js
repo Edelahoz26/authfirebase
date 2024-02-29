@@ -69,7 +69,7 @@ const LoginScreen = (props) => {
         source={require("../../assets/nativescript.png")}
         style={styles.logoLogin}
       />
-      <Text style={styles.titleLogin}>Welcome back.</Text>
+      <Text style={styles.titleLogin}>Welcome back</Text>
       <TextInput
         placeholder="Email"
         value={email}
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   button: {
-    backgroundColor: "#3498db",
+    backgroundColor: "#000",
     width: "60%",
     padding: 15,
     borderRadius: 10,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   buttonOutline: {
     backgroundColor: "white",
     marginTop: 5,
-    borderColor: "#3498db",
+    borderColor: "#000",
     borderWidth: 2,
     marginTop: 10,
   },
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   buttonOutlineText: {
-    color: "#3498db",
+    color: "#000",
     fontWeight: "700",
     fontSize: 16,
   },

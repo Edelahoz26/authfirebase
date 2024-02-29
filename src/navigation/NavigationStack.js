@@ -1,10 +1,11 @@
 //Components
-import { StyleSheet, Text, View } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import SignUpScreen from "../screens/SignUpScreen";
+import { createStackNavigator } from "@react-navigation/stack";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const NavigationStack = (props) => {
   const Stack = createStackNavigator();
@@ -24,7 +25,14 @@ const NavigationStack = (props) => {
       <Stack.Screen
         name="Register"
         component={SignUpScreen}
-        options={{ headerShown: true, animationEnabled: true }}
+        options={{
+          title: "",
+          headerShown: true,
+          animationEnabled: true,
+          headerStyle: {
+            backgroundColor: "#f2f2f2",
+          },
+        }}
       />
     </Stack.Navigator>
   );
