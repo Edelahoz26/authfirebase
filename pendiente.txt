@@ -1,0 +1,20 @@
+controlar mensajes de error:
+
+
+
+
+manejo de varios intentos suspender:
+
+Mensaje de error
+//Firebase:
+access to this account has been temporarily disabled due to many failed login attempts. 
+You can inmmediately restore it by resetting your password or you can try again later
+
+auth/too-many-requests//
+
+espanol
+Firebase:
+El acceso a esta cuenta ha sido desactivado temporalmente debido a muchos intentos fallidos de inicio de sesión. 
+Puede restaurarlo inmediatamente restableciendo su contraseña o puede volver a intentarlo más tarde.
+
+auth/demasiado-solicitud
