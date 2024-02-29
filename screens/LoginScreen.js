@@ -9,11 +9,11 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { ErrorService } from "../services/ErrorService";
-import appFirebase from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
-const auth = getAuth(appFirebase);
+/* const auth = getAuth(appFirebase); */
+
 const LoginScreen = (props) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -153,9 +153,8 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     fontSize: 14,
     textAlign: "center",
-    marginTop: 10,  
-    maxWidth: 300, 
-    marginHorizontal: 20, 
-
+    marginTop: 10,
+    maxWidth: 300,
+    marginHorizontal: 20,
   },
 });
