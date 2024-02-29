@@ -1,3 +1,4 @@
+//Components
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -9,52 +10,58 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
 
-/* const auth = getAuth(appFirebase); */
+// Función signInWithEmailAndPassword y auth desde el módulo de Firebase
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const LoginScreen = (props) => {
+  // Variables de estado para almacenar el correo electrónico, la contraseña y los mensajes de error
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState(null);
 
+  // Función para manejar el inicio de sesión del usuario con correo electrónico y contraseña
   const loginUserWithEmailAndPassword = async () => {
     try {
+      // Intentar iniciar sesión con el correo electrónico y la contraseña proporcionados
       await signInWithEmailAndPassword(auth, email, password);
+
+      //Mensaje exito y navegar a la pantalla de inicio
       Alert.alert("Inicio de sesion", "success");
       props.navigation.navigate("Home");
     } catch (error) {
-      // Manejar errores y mostrar mensajes adecuados
+      // Manejo de errores
       const errorCode = error.code;
       const errorMessage = error.message;
       setError(errorCode, errorMessage);
 
-      if (errorCode === "auth/invalid-credential") {
-        setError("Credencial inválida. Por favor, intenta nuevamente.");
-      } else if (errorCode === "auth/missing-password") {
-        setError(
-          "La contraseña no puede estar vacía. Por favor, proporciona tu contraseña."
-        );
-      } else if (errorCode === "auth/missing-email") {
-        setError("La dirección de correo electrónico no puede estar vacía.");
-      } else if (errorCode === "auth/invalid-email") {
-        setError(
-          "La dirección de correo electrónico proporcionada no es válida."
-        );
-      } else if (errorCode === "auth/too-many-requests") {
-        setError(
-          "Tu cuenta está temporalmente deshabilitada. Por favor, espera un momento y vuelve a intentarlo más tarde."
-        );
-      } else {
-        setError(errorMessage);
+      switch (errorCode) {
+        case "auth/invalid-credential":
+          setError("Credencial inválida. Por favor, intenta nuevamente.");
+          break;
+        case "auth/missing-password":
+          setError("La contraseña no puede estar vacía. Por favor, proporciona tu contraseña.");
+          break;
+        case "auth/missing-email":
+          setError("La dirección de correo electrónico no puede estar vacía.");
+          break;
+        case "auth/invalid-email":
+          setError("La dirección de correo electrónico proporcionada no es válida.");
+          break;
+        case "auth/too-many-requests":
+          setError("Tu cuenta está temporalmente deshabilitada. Por favor, espera un momento y vuelve a intentarlo más tarde.");
+          break;
+        default:
+          setError(errorMessage);
+          break;
       }
     }
   };
   return (
     <View style={styles.containerLogin}>
       <Image
-        source={require("../assets/nativescript.png")}
+        source={require("../../assets/nativescript.png")}
         style={styles.logoLogin}
       />
       <Text style={styles.titleLogin}>Welcome back.</Text>
