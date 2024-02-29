@@ -13,12 +13,12 @@ import {
 
 // Función signInWithEmailAndPassword y auth desde el módulo de Firebase
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth } from "../config/firebase";
 
 const LoginScreen = (props) => {
   // Variables de estado para almacenar el correo electrónico, la contraseña y los mensajes de error
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
   // Función para manejar el inicio de sesión del usuario con correo electrónico y contraseña
@@ -26,6 +26,11 @@ const LoginScreen = (props) => {
     try {
       // Intentar iniciar sesión con el correo electrónico y la contraseña proporcionados
       await signInWithEmailAndPassword(auth, email, password);
+
+      //Campos vacios
+      setEmail("");
+      setPassword("");
+      setError(null)
 
       //Mensaje exito y navegar a la pantalla de inicio
       Alert.alert("Inicio de sesion", "success");
@@ -86,7 +91,7 @@ const LoginScreen = (props) => {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => loginUserWithEmailAndPassword()}
+        onPress={() => props.navigation.navigate('Register')}
         style={[styles.button, styles.buttonOutline]}
       >
         <Text style={styles.buttonOutlineText}>Register</Text>
