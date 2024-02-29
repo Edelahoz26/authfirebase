@@ -81,15 +81,6 @@ const SignUpScreen = (props) => {
         case "auth/email-already-in-use":
           setError("Esta dirección de correo electrónico ya está en uso.");
           break;
-        case "auth/missing-password":
-          setError(
-            "La contraseña es requerida. Por favor, proporciona una contraseña y vuelve a intentarlo."
-          );
-          break;
-        case "auth/weak-password":
-          setError("La palabra debe tener al menos 6 caracteres.");
-          break;
-
         default:
           setError(errorMessage);
           break;
